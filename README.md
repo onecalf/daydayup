@@ -1,2 +1,2 @@
-# daydayup
-good good study , day day up
+# DayDayUp
+平时的学习笔记，积少成多
