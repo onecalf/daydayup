@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         findViewById(R.id.btn_custom_view).setOnClickListener(this);
         findViewById(R.id.btn_animation).setOnClickListener(this);
+        findViewById(R.id.btn_tool).setOnClickListener(this);
 
     }
 
@@ -24,6 +25,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_animation:
                 startActivity(new Intent(MainActivity.this,AnimationActivity.class));
+                break;
+            case R.id.btn_tool:
+                startActivity(new Intent(MainActivity.this,ToolActivity.class));
                 break;
         }
     }
