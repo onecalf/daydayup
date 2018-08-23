@@ -30,6 +30,7 @@ public class ToolActivity extends Activity{
     }
 
     private void initData() {
+        //保留小数点后几位
         mFilter = new PointLengthFilter(3);
         mEditText.setFilters(new InputFilter[]{mFilter});
     }

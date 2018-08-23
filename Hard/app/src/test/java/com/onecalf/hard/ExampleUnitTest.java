@@ -15,4 +15,12 @@ public class ExampleUnitTest {
         assertEquals(4, 2 + 2);
         System.out.println("hello");
     }
+
+    @Test
+    public void show(){
+
+        System.out.println("show test");
+    }
+
+
 }
