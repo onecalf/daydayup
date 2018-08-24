@@ -12,7 +12,6 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 
 public class SwitchButton extends View {
@@ -104,13 +103,12 @@ public class SwitchButton extends View {
 
                 if (x <= getWidth() && x > 0 && y <= getHeight() && y > 0) {
                     mOpen = !mOpen;
+                    if (mListener != null) {
+                        mListener.onSwitchClicked(mOpen);
+                        animator.start();
+                    }
                 }
 
-                if (mListener != null) {
-                    mListener.onSwitchClicked(mOpen);
-                }
-
-                animator.start();
                 break;
         }
 
