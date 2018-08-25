@@ -1,7 +1,5 @@
 package com.onecalf.hard.widget;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -26,8 +24,17 @@ public class SwitchButton extends View {
     private OnSwitchClickedListener mListener;
     private ValueAnimator animator = new ValueAnimator();
 
-    private int mDotX;
+    //白色圆点的圆心坐标
+    private int mDotX ;
     private int mDotY;
+
+    //mDotX的取值范围
+    private int mDotMinX;
+    private int mDotMaxX;
+
+    //drawRoundRect的横向和纵向半径
+    private int mRoundCx;
+    private int mRoundCy;
 
 
     public SwitchButton(Context context) {
@@ -48,7 +55,7 @@ public class SwitchButton extends View {
         mDotPaint.setColor(mDotColor);
         mDotPaint.setStyle(Paint.Style.FILL);
 
-        animator.setDuration(3000);
+        animator.setDuration(180);
         animator.setInterpolator(new LinearInterpolator());
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -60,34 +67,29 @@ public class SwitchButton extends View {
         });
     }
 
+
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        animator.setIntValues(45, w - 45);
+
+        mRoundCx = Math.min(w,h);
+        mRoundCy = Math.min(w,h);
+
+        mDotMinX = mRoundCx / 2;
+        mDotMaxX = w - mDotMinX;
+
+        mDotX = mOpen ? mDotMaxX : mDotMinX;
+        mDotY = getHeight() / 2;
+
+        animator.setIntValues(mDotMinX, mDotMaxX);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        RectF rectF = new RectF();
-        rectF.left = 0;
-        rectF.top = 0;
-        rectF.right = getWidth();
-        rectF.bottom = getHeight();
+        RectF rectF = new RectF(0,0,getWidth(),getHeight());
 
-        if(mOpen){
-            mBackgroundPaint.setColor(mOpenBackgroundColor);
-        }else {
-            mBackgroundPaint.setColor(mCloseBackgroundColor);
-        }
-        canvas.drawRoundRect(rectF, 60, 60, mBackgroundPaint);
-
-        if (mOpen) {
-            mDotX = getWidth() - 45;
-            mDotY = getHeight() / 2;
-        } else {
-            mDotX = 45;
-            mDotY = getHeight() / 2;
-        }
+        mBackgroundPaint.setColor( mOpen ? mOpenBackgroundColor : mCloseBackgroundColor );
+        canvas.drawRoundRect(rectF, mRoundCx, mRoundCy, mBackgroundPaint);
 
         int radius = Math.min(getWidth(), getHeight()) / 2 - 5;
         canvas.drawCircle(mDotX, mDotY, radius, mDotPaint);
@@ -103,6 +105,12 @@ public class SwitchButton extends View {
 
                 if (x <= getWidth() && x > 0 && y <= getHeight() && y > 0) {
                     mOpen = !mOpen;
+                    if(mOpen){
+                        animator.setIntValues(mDotMinX, mDotMaxX);
+                    }else {
+                        animator.setIntValues(mDotMaxX, mDotMinX);
+                    }
+
                     if (mListener != null) {
                         mListener.onSwitchClicked(mOpen);
                         animator.start();
@@ -115,13 +123,25 @@ public class SwitchButton extends View {
         return true;
     }
 
+    //设置监听器
     public void setSwitchOnClickedListener(OnSwitchClickedListener listener) {
         mListener = listener;
+    }
+
+    //是否处于打开状态
+    public boolean isOpen(){
+        return mOpen;
+    }
+
+    public void setOpen(boolean isOpen){
+        mOpen = isOpen;
+        invalidate();
     }
 
     public interface OnSwitchClickedListener {
         void onSwitchClicked(boolean isOpen);
     }
+
 
 
 }
