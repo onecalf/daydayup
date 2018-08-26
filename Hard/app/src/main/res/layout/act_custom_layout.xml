@@ -42,4 +42,12 @@
         app:stepTextSize="16sp"
         />
 
+    <com.onecalf.hard.widget.RatingView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:gradeNumber="5"
+        app:starNormal="@mipmap/color_unchecked"
+        app:starFocus="@mipmap/color_checked"
+        />
+
 </LinearLayout>

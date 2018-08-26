@@ -21,6 +21,9 @@ public class CustomViewActivity extends Activity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_custom_layout);
+
+
+
         tvHello = findViewById(R.id.tv_hello);
         switchButton = findViewById(R.id.switchButton);
         stepView = findViewById(R.id.step_view);

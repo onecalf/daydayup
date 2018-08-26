@@ -8,5 +8,10 @@
         <attr name="stepTextColor" format="color"/>
     </declare-styleable>
 
+    <declare-styleable name="RatingView">
+        <attr name="starNormal" format="reference"/>
+        <attr name="starFocus" format="reference"/>
+        <attr name="gradeNumber" format="integer"/>
+    </declare-styleable>
 
 </resources>
