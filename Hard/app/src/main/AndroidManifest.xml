@@ -19,6 +19,10 @@
         <activity android:name=".CustomViewActivity" />
         <activity android:name=".AnimationActivity" />
         <activity android:name=".ToolActivity" />
+        <activity android:name=".plugin.FirstActivity"/>
+        <activity android:name=".plugin.SecondActivity"/>
+        <activity android:name=".plugin.StubActivity"/>
+        <activity android:name=".plugin.PluginTestActivity"/>
     </application>
 
 </manifest>

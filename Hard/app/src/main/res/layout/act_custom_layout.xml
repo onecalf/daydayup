@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical">
 
     <Button
         android:layout_width="match_parent"
@@ -28,5 +29,17 @@
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"/>
+
+
+    <com.onecalf.hard.widget.StepView
+        android:id="@+id/step_view"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:outerColor="@color/colorPrimary"
+        app:innerColor="@color/colorAccent"
+        app:borderWidth="6dp"
+        app:stepTextColor="@color/colorAccent"
+        app:stepTextSize="16sp"
+        />
 
 </LinearLayout>
