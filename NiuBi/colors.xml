@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="divider">#dcdcdc</color>
+
+    <color name="regbtn2_pressed_color">#2a82ea</color>
+    <color name="divider_color">#2c8dff</color>
+    <color name="blue">#2c8dff</color>
+    <color name="blue008fff">#008fff</color>
+    <color name="blue_white1">#aed1ed</color>
+    <color name="blue_white2">#aed1ed</color>
+    <color name="blue_white3">#aed1ed</color>
+    <color name="blue_white4">#aed1ed</color>
+    <color name="blue_white5">#aed1ed</color>
+    <color name="blue_white6">#aed1ed</color>
+
+</resources>
