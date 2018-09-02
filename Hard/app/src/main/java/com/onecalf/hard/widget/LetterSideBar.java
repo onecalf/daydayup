@@ -103,10 +103,15 @@ public class LetterSideBar extends View {
                     mCurrentLetter = mLetters[currentIndex];
 
                     if(mListener != null){
-                        mListener.onTouch(mCurrentLetter);
+                        mListener.onTouch(mCurrentLetter,true);
                     }
 
                     invalidate();
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                if(mListener != null){
+                    mListener.onTouch(mCurrentLetter,false);
                 }
                 break;
 
@@ -122,7 +127,7 @@ public class LetterSideBar extends View {
     }
 
     public interface LetterTouchListener{
-        void onTouch(String letter);
+        void onTouch(String letter,boolean isTouched);
     }
 }
 
