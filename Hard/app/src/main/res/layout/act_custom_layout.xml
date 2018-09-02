@@ -1,53 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:orientation="vertical">
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-    <Button
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="自定义view"/>
+        android:orientation="vertical"
+        android:layout_weight="3">
 
-    <TextView
-        android:id="@+id/tv_hello"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="你好,北京,Hello,world"
-        android:textSize="16sp"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="自定义view"/>
 
-    <com.onecalf.hard.widget.SimpleTextView
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:background="@color/colorGray"
-        />
+        <TextView
+            android:id="@+id/tv_hello"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="你好,北京,Hello,world"
+            android:textSize="16sp"/>
 
-    <com.onecalf.hard.widget.SwitchButton
-        android:id="@+id/switchButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"/>
+        <com.onecalf.hard.widget.SimpleTextView
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:background="@color/colorGray"
+            />
+
+        <com.onecalf.hard.widget.SwitchButton
+            android:id="@+id/switchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"/>
 
 
-    <com.onecalf.hard.widget.StepView
-        android:id="@+id/step_view"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        app:outerColor="@color/colorPrimary"
-        app:innerColor="@color/colorAccent"
-        app:borderWidth="6dp"
-        app:stepTextColor="@color/colorAccent"
-        app:stepTextSize="16sp"
-        />
+        <com.onecalf.hard.widget.StepView
+            android:id="@+id/step_view"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:borderWidth="6dp"
+            app:innerColor="@color/colorAccent"
+            app:outerColor="@color/colorPrimary"
+            app:stepTextColor="@color/colorAccent"
+            app:stepTextSize="16sp"
+            />
 
-    <com.onecalf.hard.widget.RatingView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:gradeNumber="5"
-        app:starNormal="@mipmap/color_unchecked"
-        app:starFocus="@mipmap/color_checked"
-        />
+        <com.onecalf.hard.widget.RatingView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:gradeNumber="5"
+            app:starFocus="@mipmap/color_checked"
+            app:starNormal="@mipmap/color_unchecked"
+            />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2">
+
+        <com.onecalf.hard.widget.LetterSideBar
+            android:id="@+id/letter_side_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"/>
+
+
+    </RelativeLayout>
+
 
 </LinearLayout>

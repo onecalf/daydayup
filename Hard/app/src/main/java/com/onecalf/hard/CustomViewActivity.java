@@ -9,6 +9,8 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.onecalf.hard.util.LogUtil;
+import com.onecalf.hard.widget.LetterSideBar;
 import com.onecalf.hard.widget.StepView;
 import com.onecalf.hard.widget.SwitchButton;
 
@@ -16,6 +18,7 @@ public class CustomViewActivity extends Activity{
     TextView tvHello;
     SwitchButton switchButton;
     StepView stepView;
+    LetterSideBar letterSideBar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,6 +30,7 @@ public class CustomViewActivity extends Activity{
         tvHello = findViewById(R.id.tv_hello);
         switchButton = findViewById(R.id.switchButton);
         stepView = findViewById(R.id.step_view);
+        letterSideBar = findViewById(R.id.letter_side_bar);
 
 //        tvHello.setTextSize(16);
         tvHello.setTextSize(TypedValue.COMPLEX_UNIT_PX, 46);
@@ -40,6 +44,13 @@ public class CustomViewActivity extends Activity{
 
         startStepView();
 
+
+        letterSideBar.setLetterTouchListener(new LetterSideBar.LetterTouchListener() {
+            @Override
+            public void onTouch(String letter) {
+                LogUtil.d("zhj","letter=" + letter);
+            }
+        });
 
     }
 
