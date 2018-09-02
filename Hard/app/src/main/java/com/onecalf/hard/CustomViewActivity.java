@@ -47,8 +47,8 @@ public class CustomViewActivity extends Activity{
 
         letterSideBar.setLetterTouchListener(new LetterSideBar.LetterTouchListener() {
             @Override
-            public void onTouch(String letter) {
-                LogUtil.d("zhj","letter=" + letter);
+            public void onTouch(String letter, boolean isTouched) {
+
             }
         });
 

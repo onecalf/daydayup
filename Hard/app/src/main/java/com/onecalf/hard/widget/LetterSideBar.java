@@ -99,7 +99,7 @@ public class LetterSideBar extends View {
                     currentIndex = mLetters.length - 1;
                 }
 
-                if(!mCurrentLetter.equals(mLetters[currentIndex])){
+                if(!mLetters[currentIndex].equals(mCurrentLetter)){
                     mCurrentLetter = mLetters[currentIndex];
 
                     if(mListener != null){
