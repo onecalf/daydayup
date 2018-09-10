@@ -151,8 +151,8 @@ public class SwitchButton extends View {
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
 
-        int resultWidth = (int) ViewUtil.dp2px(getContext(),85);
-        int resultHeight = (int) ViewUtil.dp2px(getContext(),40);
+        int resultWidth;
+        int resultHeight;
         if(widthMode == MeasureSpec.EXACTLY){
             resultWidth = MeasureSpec.getSize(widthMeasureSpec);
         }else {
