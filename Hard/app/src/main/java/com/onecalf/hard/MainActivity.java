@@ -1,20 +1,28 @@
 package com.onecalf.hard;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
 import com.onecalf.hard.plugin.PluginTestActivity;
 import com.onecalf.hard.reflect.Reflect;
 import com.onecalf.hard.util.LogUtil;
+import com.onecalf.hard.util.StatusUtil;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends Activity implements View.OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //设置状态栏的颜色
+//        StatusUtil.setStatusBarColor(this,Color.RED);
+        StatusUtil.setActivityTranslucent(this);
+
+
         findViewById(R.id.btn_custom_view).setOnClickListener(this);
         findViewById(R.id.btn_animation).setOnClickListener(this);
         findViewById(R.id.btn_tool).setOnClickListener(this);
