@@ -3,10 +3,13 @@ package com.onecalf.hard.widget;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.view.ViewCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.FrameLayout;
 
 public class VerticalDragListView extends FrameLayout{
@@ -14,6 +17,7 @@ public class VerticalDragListView extends FrameLayout{
     private ViewDragHelper mDragHelper;
     private View mDragListView;
     private int mMenuHeight;
+    private boolean mMenuOpened = false;//菜单是否打开
 
 
     public VerticalDragListView(@NonNull Context context) {
@@ -74,8 +78,10 @@ public class VerticalDragListView extends FrameLayout{
                 int top = mDragListView.getTop();
                 if(top > mMenuHeight / 2){//打开，滚动到下面
                     mDragHelper.settleCapturedViewAt(0,mMenuHeight);
+                    mMenuOpened = true;
                 }else {//关闭，滚动到上面
                     mDragHelper.settleCapturedViewAt(0,0);
+                    mMenuOpened = false;
                 }
 
                 invalidate();
@@ -111,6 +117,47 @@ public class VerticalDragListView extends FrameLayout{
         mMenuHeight = getChildAt(0).getMeasuredHeight();
     }
 
+    private float mDownY;
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent event) {
+        if(mMenuOpened){
+            return true;
+        }
+
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                mDownY = event.getY();
+                //让DragHelper拿到一个完整的事件
+                mDragHelper.processTouchEvent(event);
+                break;
+            case MotionEvent.ACTION_MOVE:
+                float moveY = event.getY();
+                if(moveY - mDownY > 0 && !canChildScrollUp() ) {
+                    //向下滑动并且滚动到了底部，拦截,不让ListView处理
+                    return true;
+                }
+                break;
+        }
+
+        return super.onInterceptHoverEvent(event);
+    }
+
+    //判断列表是否滚动了最顶部
+    public boolean canChildScrollUp() {
+        if (android.os.Build.VERSION.SDK_INT < 14) {
+            if (mDragListView instanceof AbsListView) {
+                final AbsListView absListView = (AbsListView) mDragListView;
+                return absListView.getChildCount() > 0
+                        && (absListView.getFirstVisiblePosition() > 0 || absListView.getChildAt(0)
+                        .getTop() < absListView.getPaddingTop());
+            } else {
+                return ViewCompat.canScrollVertically(mDragListView, -1) || mDragListView.getScrollY() > 0;
+            }
+        } else {
+            return ViewCompat.canScrollVertically(mDragListView, -1);
+        }
+    }
 }
 
 

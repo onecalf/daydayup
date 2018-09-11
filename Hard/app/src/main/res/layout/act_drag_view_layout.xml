@@ -15,11 +15,10 @@
             android:gravity="center"
             android:background="@color/colorPrimary"/>
 
-        <TextView
+        <ListView
+            android:id="@+id/list_view"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:text="前面"
-            android:gravity="center"
+            android:layout_height="match_parent"
             android:background="@color/colorAccent"/>
 
         
