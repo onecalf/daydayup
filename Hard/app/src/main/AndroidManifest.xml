@@ -23,6 +23,7 @@
         <activity android:name=".plugin.SecondActivity"/>
         <activity android:name=".plugin.StubActivity"/>
         <activity android:name=".plugin.PluginTestActivity"/>
+        <activity android:name=".DragViewActivity"/>
     </application>
 
 </manifest>

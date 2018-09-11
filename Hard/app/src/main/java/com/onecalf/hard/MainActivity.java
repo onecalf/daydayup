@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_animation).setOnClickListener(this);
         findViewById(R.id.btn_tool).setOnClickListener(this);
         findViewById(R.id.btn_test_plugin).setOnClickListener(this);
+        findViewById(R.id.btn_drag_view).setOnClickListener(this);
 
         initData();
 
@@ -57,6 +58,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_test_plugin:
                 startActivity(new Intent(MainActivity.this,PluginTestActivity.class));
+                break;
+            case R.id.btn_drag_view:
+                startActivity(new Intent(MainActivity.this,DragViewActivity.class));
                 break;
         }
     }
