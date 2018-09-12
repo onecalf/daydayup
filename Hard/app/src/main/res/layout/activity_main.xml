@@ -41,6 +41,13 @@
             android:text="拖动View"/>
 
 
+        <Button
+            android:id="@+id/btn_hello"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="hello,world"/>
+
+
     </LinearLayout>
 
 </ScrollView>

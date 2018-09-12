@@ -27,10 +27,10 @@ public class CustomViewActivity extends Activity{
 
 
 
-        tvHello = findViewById(R.id.tv_hello);
-        switchButton = findViewById(R.id.switchButton);
-        stepView = findViewById(R.id.step_view);
-        letterSideBar = findViewById(R.id.letter_side_bar);
+        tvHello = (TextView) findViewById(R.id.tv_hello);
+        switchButton = (SwitchButton) findViewById(R.id.switchButton);
+        stepView = (StepView) findViewById(R.id.step_view);
+        letterSideBar = (LetterSideBar) findViewById(R.id.letter_side_bar);
 
 //        tvHello.setTextSize(16);
         tvHello.setTextSize(TypedValue.COMPLEX_UNIT_PX, 46);

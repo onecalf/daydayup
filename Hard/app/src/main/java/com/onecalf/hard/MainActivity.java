@@ -2,16 +2,21 @@ package com.onecalf.hard;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
+import com.butterknife.annotation.BindView;
 import com.onecalf.hard.plugin.PluginTestActivity;
 import com.onecalf.hard.reflect.Reflect;
 import com.onecalf.hard.util.LogUtil;
 import com.onecalf.hard.util.StatusUtil;
 
 public class MainActivity extends Activity implements View.OnClickListener{
+    @BindView(R.id.btn_hello)
+    private Button BtnHello;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
