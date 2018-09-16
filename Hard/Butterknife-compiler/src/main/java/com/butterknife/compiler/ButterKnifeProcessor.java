@@ -3,9 +3,14 @@ package com.butterknife.compiler;
 
 import com.butterknife.annotation.BindView;
 import com.google.auto.service.AutoService;
+import com.squareup.javapoet.TypeSpec;
 
 import java.lang.annotation.Annotation;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.processing.AbstractProcessor;
@@ -13,6 +18,7 @@ import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
+import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
 
 
@@ -50,6 +56,32 @@ public class ButterKnifeProcessor extends AbstractProcessor {
         System.out.println("========================>");
 
         Set<? extends Element> elements = roundEnvironment.getElementsAnnotatedWith(BindView.class);
+
+        //1 解析属性  activity -> List<Element>
+        Map<Element,List<Element>> elementMap = new LinkedHashMap<>();
+
+        for (Element element : elements){
+            Element enclosingElement = element.getEnclosingElement();
+            List<Element> viewBindElements = elementMap.get(enclosingElement);
+            if(viewBindElements == null){
+                viewBindElements = new ArrayList<>();
+                elementMap.put(enclosingElement,viewBindElements);
+            }
+
+            viewBindElements.add(element);
+        }
+
+
+        //2 生成代码
+        for (Map.Entry<Element,List<Element>> entry : elementMap.entrySet()){
+            Element enclosingElement = entry.getKey();
+            List<Element> viewBindElement = entry.getValue();
+
+            String activityClassNameStr = enclosingElement.getSimpleName().toString();
+            TypeSpec.Builder classBuilder = TypeSpec.classBuilder("_ViewBinding")
+                    .addModifiers(Modifier.FINAL,Modifier.PUBLIC);
+
+        }
 
 
         return false;
