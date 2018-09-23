@@ -53,8 +53,6 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
         LogUtil.d("zhj","world=" + world);
 
-
-
     }
 
     @Override
