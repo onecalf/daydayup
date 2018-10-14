@@ -47,6 +47,24 @@
             android:layout_height="wrap_content"
             android:text="hello,world"/>
 
+        <Button
+            android:id="@+id/btn_myrxjava"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RxJava"/>
+
+        <Button
+        android:id="@+id/btn_third_rxjava"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="第三方的RxJava"/>
+
+        <Button
+            android:id="@+id/btn_third_retrofit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="retrofit"/>
+
 
     </LinearLayout>
 
