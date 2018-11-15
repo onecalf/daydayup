@@ -2,10 +2,14 @@ package com.onecalf.hard;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 
+import com.onecalf.hard.buck.BaseDao;
+import com.onecalf.hard.buck.Person;
 import com.onecalf.hard.myrxjava.Observable;
 import com.onecalf.hard.myrxjava.Observer;
 import com.onecalf.hard.myrxjava.Schedulers;
@@ -148,6 +152,16 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     private void onRetrofitTest() {
+
+        String sqliteDatabasePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/meicai.db";
+
+        Log.e("zhj","dbpath=" + sqliteDatabasePath);
+
+        SQLiteDatabase sqLiteDatabase = SQLiteDatabase.openOrCreateDatabase(sqliteDatabasePath,null);
+        BaseDao<Person> baseDao = new BaseDao<>();
+        baseDao.init(Person.class,sqLiteDatabase);
+
+
 
     }
 
