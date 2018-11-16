@@ -1,5 +1,7 @@
 package com.onecalf.hard.buck;
 
+import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
@@ -8,6 +10,7 @@ import com.onecalf.hard.buck.annotion.DbTable;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class BaseDao<T> implements IBaseDao<T>{
@@ -50,6 +53,7 @@ public class BaseDao<T> implements IBaseDao<T>{
             isInit = true;
         }
 
+        initCacheMap();
         return isInit;
     }
 
@@ -92,7 +96,6 @@ public class BaseDao<T> implements IBaseDao<T>{
 
         try {
             this.database.execSQL(sb.toString());
-            initCacheMap();
         }catch (Exception e){
             e.printStackTrace();
             return false;
@@ -129,10 +132,60 @@ public class BaseDao<T> implements IBaseDao<T>{
         cursor.close();
     }
 
+    /**
+     * ContentValues value = new ContentValues();
+     * values.put()
+     *
+     *
+     *
+     * @param entity
+     * @return
+     */
 
     @Override
-    public int insert(T entity) {
-        return 0;
+    public long insert(T entity) {
+        ContentValues contentValues = getContentValues(entity);
+        return database.insert(tableName,null,contentValues);
+    }
+
+    private ContentValues getContentValues(T entity) {
+        ContentValues contentValues = new ContentValues();
+        Iterator<Map.Entry<String, Field>> iterator = cacheMap.entrySet().iterator();
+        while (iterator.hasNext()){
+            Map.Entry<String, Field> fieldEntry = iterator.next();
+            Field field = fieldEntry.getValue();
+            String key = fieldEntry.getKey();
+
+
+            try {
+                field.setAccessible(true);
+                Object object = field.get(entity);
+                Class type = field.getType();
+                if(type == String.class){
+                    String value = (String) object;
+                    contentValues.put(key,value);
+                }else if(type == Double.class){
+                    Double value = (Double) object;
+                    contentValues.put(key,value);
+                }else if(type == Integer.class){
+                    Integer value = (Integer) object;
+                    contentValues.put(key,value);
+                }else if(type == Long.class){
+                    Long value = (Long) object;
+                    contentValues.put(key,value);
+                }else if(type == byte[].class){
+                    byte[] value = (byte[]) object;
+                    contentValues.put(key,value);
+                }else {
+                    continue;
+                }
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        return null;
     }
 
     @Override

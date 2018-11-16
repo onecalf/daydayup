@@ -7,7 +7,7 @@ public interface IBaseDao<T> {
      * @param entity
      * @return
      */
-    int insert(T entity);
+    long insert(T entity);
 
     /**
      * 更新
