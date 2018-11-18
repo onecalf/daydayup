@@ -1,4 +1,4 @@
-package com.zhj.ndkdemo;
+package com.zhj.demo1;
 
 import org.junit.Test;
 

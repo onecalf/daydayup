@@ -4,7 +4,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.google.auto.service:auto-service:1.0-rc3'
     //注解
-    compile 'com.squareup:javapoet:1.8.0'
+    compile 'com.squareup:javapoet:1.8.0'   //生成java文件的工具
     //生成代码工具
     implementation project(':ButterKnife-annotations')
 }

@@ -1,1 +1,1 @@
-include ':app', ':ButterKnife-annotations', ':Butterknife-compiler', ':butterknife', ':aidlclient', ':ndkdemo'
+include ':app', ':ButterKnife-annotations', ':Butterknife-compiler', ':butterknife', ':aidlclient', ':ndkdemo', ':demo1'

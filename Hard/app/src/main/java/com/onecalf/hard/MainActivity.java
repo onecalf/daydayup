@@ -2,6 +2,7 @@ package com.onecalf.hard;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Environment;
@@ -16,6 +17,7 @@ import com.onecalf.hard.myrxjava.Schedulers;
 import com.onecalf.hard.myrxjava.Subscriber;
 import com.onecalf.hard.plugin.PluginTestActivity;
 import com.onecalf.hard.reflect.Reflect;
+import com.onecalf.hard.util.AppUtil;
 import com.onecalf.hard.util.LogUtil;
 import com.onecalf.hard.util.StatusUtil;
 
@@ -148,20 +150,36 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     private void onThirdRxJava() {
+        //插入
+
+
 
     }
 
     private void onRetrofitTest() {
+        //动态申请权限
+        AppUtil.verifyStoragePermissions(this);
 
         String sqliteDatabasePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/meicai.db";
 
         Log.e("zhj","dbpath=" + sqliteDatabasePath);
 
-        SQLiteDatabase sqLiteDatabase = SQLiteDatabase.openOrCreateDatabase(sqliteDatabasePath,null);
+        SQLiteDatabase sqLiteDatabase = null;
+
+        try {
+            sqLiteDatabase = SQLiteDatabase.openOrCreateDatabase(sqliteDatabasePath, null);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         BaseDao<Person> baseDao = new BaseDao<>();
         baseDao.init(Person.class,sqLiteDatabase);
 
-
+        Person person = new Person();
+        person.name = "tom1";
+        person.password = "abc1231";
+        baseDao.insert(person);
 
     }
 

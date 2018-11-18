@@ -11,6 +11,7 @@ import com.onecalf.hard.buck.annotion.DbTable;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 public class BaseDao<T> implements IBaseDao<T>{
@@ -27,6 +28,7 @@ public class BaseDao<T> implements IBaseDao<T>{
 
     private String tableName;
 
+    //字段名和bean中的属性Field相对应
     private Map<String,Field> cacheMap;
 
 
@@ -145,7 +147,8 @@ public class BaseDao<T> implements IBaseDao<T>{
     @Override
     public long insert(T entity) {
         ContentValues contentValues = getContentValues(entity);
-        return database.insert(tableName,null,contentValues);
+        long r = database.insert(tableName,null,contentValues);
+        return r;
     }
 
     private ContentValues getContentValues(T entity) {
@@ -156,10 +159,9 @@ public class BaseDao<T> implements IBaseDao<T>{
             Field field = fieldEntry.getValue();
             String key = fieldEntry.getKey();
 
-
             try {
                 field.setAccessible(true);
-                Object object = field.get(entity);
+                Object object = field.get(entity); //获取属性的值
                 Class type = field.getType();
                 if(type == String.class){
                     String value = (String) object;
@@ -182,9 +184,12 @@ public class BaseDao<T> implements IBaseDao<T>{
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             }
-
         }
 
+        return contentValues;
+    }
+
+    public List<T> query(){
         return null;
     }
 

@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".TestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,6 +27,7 @@
         <activity android:name=".plugin.StubActivity"/>
         <activity android:name=".plugin.PluginTestActivity"/>
         <activity android:name=".DragViewActivity"/>
+        <activity android:name=".MainActivity"/>
 
         <service android:name=".IRemoteService">
             <intent-filter>

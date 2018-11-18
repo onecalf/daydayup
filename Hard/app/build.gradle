@@ -28,8 +28,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation project(':ButterKnife-annotations')
-    implementation project(':Butterknife-compiler')
     implementation 'io.reactivex:rxjava:1.1.1'
     implementation 'io.reactivex:rxandroid:1.2.1'
     // Okhttp库
@@ -38,6 +36,9 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.0.2'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.android.volley:volley:1.1.1'
-//    compile 'com.mcxiaoke.volley:library:1.0.6'
+    //    compile 'com.mcxiaoke.volley:library:1.0.6'
+    implementation project(':butterknife')
+    implementation project(':ButterKnife-annotations')
+
 }
 
