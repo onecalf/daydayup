@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhj.demo1.eventtest.LayoutView1 xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <com.zhj.demo1.eventtest.LayoutView2
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.zhj.demo1.eventtest.MyTextView
+            android:id="@+id/tv"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="#FF88FF"
+            android:text="AB"
+            android:textColor="#0000FF"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+    </com.zhj.demo1.eventtest.LayoutView2>
+
+
+</com.zhj.demo1.eventtest.LayoutView1>

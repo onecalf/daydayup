@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.widget.Button;
 import com.butterknife.ButterKnife;
 import com.butterknife.annotation.BindView;
+import com.onecalf.hard.util.StatusUtil;
 
 public class TestActivity extends Activity {
     @BindView(R.id.btn_hello)
@@ -21,6 +22,7 @@ public class TestActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_test);
+        StatusUtil.setStatusBarColor(this,getResources().getColor(R.color.colorGray2));
         ButterKnife.bind(this);
     }
 }
