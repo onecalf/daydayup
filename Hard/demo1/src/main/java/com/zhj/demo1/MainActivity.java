@@ -48,8 +48,8 @@ public class MainActivity extends Activity {
                         return goodPerson;
                     }
                 })
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribeOn(Schedulers.newThread())
+//                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<GoodPerson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -73,4 +73,5 @@ public class MainActivity extends Activity {
                 });
 
     }
+
 }
