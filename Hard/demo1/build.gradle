@@ -38,4 +38,7 @@ dependencies {
     // (see https://github.com/ReactiveX/RxJava/releases for latest 2.x.x version)
     implementation 'io.reactivex.rxjava2:rxjava:2.1.0'
     implementation files('libs/aspectjrt.jar')
+
+    implementation "com.android.support:design:27.1.1"
+
 }

@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".ConstraintActivity" />
         <activity android:name=".eventtest.MotionEventTestActivity" />
+        <activity android:name=".weibo.WeiboActivity"/>
     </application>
 
 </manifest>

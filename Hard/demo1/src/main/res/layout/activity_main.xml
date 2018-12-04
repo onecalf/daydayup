@@ -19,6 +19,12 @@
         android:layout_height="wrap_content"
         android:text="ConstraintLayout" />
 
+    <Button
+        android:id="@+id/btn_other"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Other" />
+
     <com.zhj.demo1.view.MyScrollView
         android:layout_width="match_parent"
         android:layout_height="400dp"
