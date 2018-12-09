@@ -26,6 +26,18 @@
             android:layout_height="wrap_content"
             />
 
+        <Button
+                android:id="@+id/btn_my_view"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="自定义VIEW"/>
+
+        <Button
+                android:id="@+id/btn_main_act2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="MainActivity2"/>
+
 
     </com.zhj.demo2.view.MyLinearLayout>
 
