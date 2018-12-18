@@ -1,6 +1,9 @@
 package com.zhj.demo1.view;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -55,8 +58,30 @@ public class MyLinearLayout extends LinearLayout {
         return super.onInterceptTouchEvent(event);
     }
 
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        return true;
+//    }
+//
+
+
+
+    Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        return true;
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+//        paint.setColor(Color.parseColor("#aa3311"));
+//        canvas.drawCircle(200,200,50,paint);
+
+        Log.i("myLinearLayout","onDraw");
+    }
+
+    @Override
+    protected void dispatchDraw(Canvas canvas) {
+        super.dispatchDraw(canvas);
+        paint.setColor(Color.parseColor("#aa3311"));
+        canvas.drawCircle(400,200,50,paint);
+        Log.i("myLinearLayout","dispatchDraw");
     }
 }

@@ -1,6 +1,9 @@
 package com.zhj.demo1.view;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -62,4 +65,27 @@ public class MyButton extends Button {
 //
 //        return true;
 //    }
+
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
+    Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+//        paint.setColor(Color.BLUE);
+//        canvas.drawCircle(80,80,40,paint);
+
+    }
+
+    @Override
+    protected void dispatchDraw(Canvas canvas) {
+        super.dispatchDraw(canvas);
+//        paint.setColor(Color.BLUE);
+//        canvas.drawCircle(80,80,40,paint);
+    }
 }

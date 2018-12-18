@@ -1,8 +1,10 @@
 package com.zhj.demo1;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.zhj.demo1.eventtest.MotionEventTestActivity;
@@ -31,8 +33,18 @@ public class MainActivity extends Activity {
 
                 Intent intent = new Intent(MainActivity.this, MotionEventTestActivity.class);
                 startActivity(intent);
+
+//                Intent intent = new Intent(new ComponentName("com.zhj.demo1","com.zhj.demo1.SecondActivity"));
+//                startActivity(intent);
+
+
+
             }
         });
+
+
+        Log.i("zhj",  "MainActivity 所在的任务的id为: " +  getTaskId());
+        Log.e("zhj",  "AT_MOST =  " + Integer.toBinaryString(View.MeasureSpec.AT_MOST));
     }
 
     private void onConstraint() {
