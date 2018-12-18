@@ -3,17 +3,19 @@ package com.zhj.demo1;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.zhj.demo1.eventtest.MotionEventTestActivity;
 import com.zhj.demo1.myrxjava.Observable;
 import com.zhj.demo1.myrxjava.OnSubscribe;
 import com.zhj.demo1.myrxjava.Subscriber;
+import com.zhj.demo1.weibo.WeiboActivity;
 
 
 public class MainActivity extends Activity {
+    int state = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +25,24 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
 //                onRxjava();
-                onMyRxjava();
+//                onMyRxjava();
+
+                PackageManager pm = getPackageManager();
+
+                ComponentName componentName = new ComponentName(MainActivity.this,MotionEventTestActivity.class);
+
+                if(state == 1){
+                    state = 2;
+                }else if(state == 2){
+                    state =1;
+                }
+
+
+                pm.setComponentEnabledSetting(componentName,1,
+                        PackageManager.DONT_KILL_APP);
+
+
+
             }
         });
         findViewById(R.id.btn_constraint).setOnClickListener(new View.OnClickListener() {
@@ -33,18 +52,20 @@ public class MainActivity extends Activity {
 
                 Intent intent = new Intent(MainActivity.this, MotionEventTestActivity.class);
                 startActivity(intent);
-
-//                Intent intent = new Intent(new ComponentName("com.zhj.demo1","com.zhj.demo1.SecondActivity"));
-//                startActivity(intent);
-
-
-
             }
         });
 
+        findViewById(R.id.btn_other).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onOther();
+            }
+        });
+    }
 
-        Log.i("zhj",  "MainActivity 所在的任务的id为: " +  getTaskId());
-        Log.e("zhj",  "AT_MOST =  " + Integer.toBinaryString(View.MeasureSpec.AT_MOST));
+    private void onOther() {
+        Intent intent = new Intent(MainActivity.this, WeiboActivity.class);
+        startActivity(intent);
     }
 
     private void onConstraint() {
