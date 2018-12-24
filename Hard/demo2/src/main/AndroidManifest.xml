@@ -26,6 +26,7 @@
         <activity android:name=".weibo.WeiboActivity"/>
         <activity android:name=".CustomViewActivity"/>
         <activity android:name=".MainActivity2"/>
+        <activity android:name=".TestActivity"/>
     </application>
 
 </manifest>

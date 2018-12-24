@@ -54,7 +54,7 @@ public class MainActivity extends Activity {
     }
 
     private void onTest() {
-        Intent intent = new Intent(this,SecondActivity.class);
+        Intent intent = new Intent(this,TestActivity.class);
         startActivity(intent);
 
 
