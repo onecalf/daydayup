@@ -33,4 +33,6 @@ public class MyButton extends Button {
         Log.e("zhj","MyButton dispatchDraw...");
     }
 
+
+
 }
